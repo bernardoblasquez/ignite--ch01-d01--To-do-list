@@ -16,6 +16,21 @@ export function TaskList() {
 
   function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+    let idFromDate = Date.now();
+
+    if (newTaskTitle !== ''){
+      let newTask = {
+        id: idFromDate,
+        title: newTaskTitle,
+        isComplete:false
+      }
+      setTasks([...tasks, newTask]) // imutabilidade
+      setNewTaskTitle('')
+    }
+    else {
+      console.log("Não é permitido inserir tarefa vazia")
+    }
+    
   }
 
   function handleToggleTaskCompletion(id: number) {
